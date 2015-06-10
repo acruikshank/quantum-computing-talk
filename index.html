@@ -8,7 +8,7 @@ body {
   background-color: #ff4e50;
   margin: 0;
   padding: 0;
-  font-family: Futura,Helvetica,Arial,san-serif;
+  font-family: "Avenir Next",Helvetica,Arial,san-serif;
   color: #fff;
   overflow: hidden;
   height: 100%;
@@ -51,6 +51,10 @@ body {
   transform: translate(-50%, 0);
 }
 
+.offscreen img, .offscreen video {
+  display: none;
+}
+
 .slide .box {
   position: absolute;
   top: 30%;
@@ -79,14 +83,14 @@ body {
   transform: translate(0, -50%)
 }
 
-.slide h2.center {
+.slide h2.center, .slide h3.center{
   left: 0;
   width: 100%;
   text-align: center;
 }
 
 .slide h1 {
-  font-size: 10vw;
+  font-size: 14vw;
   line-height: 1.5em;
   position: absolute;
   z-index: 1;
@@ -101,10 +105,29 @@ body {
 }
 
 .slide h2 {
-  font-size: 4vw;
+  font-size: 5vw;
   line-height: 1.5em;
   position: absolute;
   z-index: 1;
+  font-weight: 400;
+}
+
+.slide h3 {
+  font-size: 3.5vw;
+  line-height: 1.5em;
+  position: absolute;
+  z-index: 1;
+  font-weight: 400;
+}
+
+.slide h3.above { bottom: 50%; }
+.slide h3.below { top: 50%; }
+.slide .divider {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  border-top: 4px dashed white;
 }
 
 .slide .bottom-right {
@@ -140,10 +163,44 @@ body {
   line-height: 1.5em;
   position: absolute;
   z-index: 1;
-  top: 42%;
+  top: 50%;
+  margin-top: -.75em;
   left: 0;
   width: 100%;
   text-align: center;
+}
+
+.slide .bigger {
+  font-size: 8vw;
+}
+
+.slide .equation {
+  font-size: 4vw;
+}
+
+.slide .equation.high {
+  font-size: 4.5vw;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 0;
+}
+
+.slide .equation.low {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  font-size: 4.5vw;
+  bottom: 0%;
+}
+
+.slide .graph {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  height: 100%;
 }
 
 .slide .header {
@@ -170,6 +227,9 @@ body {
 
 .slide ul li:before {
   content: "• ";
+}
+
+.slide.outline ul li:before {
   text-shadow: 0px 0px 8px black;
 }
 
@@ -178,17 +238,11 @@ body {
   text-shadow: 0px 0px 8px black;
 }
 
-.img img {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  height: 100%;
-  margin: 0 -50%;
-}
 
 
 
   </style>
+  <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 </head>
 <body>
 
@@ -196,33 +250,37 @@ body {
     <h2 class="bottom-right">Quantum Computation</h2>
   </div>
 
-  <div class="slide">
+  <div class="slide dark">
     <img src="chadev.jpg"/>
     <h2 class="bottom-right inset">Motivation</h2>
   </div>
 
-  <div class="slide dark">
-    <img src="quantum_leap.gif"/>
-    <h2 class="bottom-right inset">quantum computing?</h2>
-  </div>
-
   <div class="slide">
-    <h2 class="bottom-right inset">history</h2>
+    <h2 class="bottom-right inset">History</h2>
   </div>
 
   <div class="slide dark">
-    <img src="billiards.gif"/>
+    <img src="billiards.gif" title="billard ball computer"/>
     <h2 class="top-left inset">Fredkin, Toffoli</h2>
   </div>
 
   <div class="slide dark">
-    <img src="feynman.gif"/>
+    <img src="feynman.gif" title="Richard Feynman"/>
     <h2 class="bottom-right inset">this guy</h2>
+  </div>
+
+  <div class="slide dark">
+    <img src="quantum_leap.gif"/>
+    <h2 class="bottom-right">quantum mechanics?</h2>
+  </div>
+
+  <div class="slide">
+    <h2 class="bottom-right">How do you build one?</h2>
   </div>
 
   <div class="slide dark outline">
     <img src="qubits.png"/>
-    <h2 class="top-left center">qubits</h2>
+    <h2 class="top-left center high">Qubits</h2>
     <ul>
       <li>photons</li>
       <li>electrons</li>
@@ -232,7 +290,7 @@ body {
   </div>
 
   <div class="slide">
-    <h2 class="bottom-right inset">what's the point?</h2>
+    <h2 class="bottom-right">what's the point?</h2>
   </div>
 
   <div class="slide dark">
@@ -264,35 +322,127 @@ body {
   </div>
 
   <div class="slide">
-    A. Motivation
-      1. Turing completeness talk
-      2. Questions about Quantum Computing
-    B. What is a quantum computer
-      1. Originated with Richard Feyman and the minimally sized UTM
-      2. A computer whose states are composed of qubits
-      3. Qubits are 2-state quantum systems
-      4. Types of Quantum Computers
-    C. What can they do
-      1. Good news: Everything a UTM can do
-      2. Bad news: Nothing a UTM can't do
-      3. QCs are more efficent than CCs
-      4. 56153 = 233 x 241
-    D. Computational Complexity
-      1. O(N)
-      2. Poly time vs. Exponential
-      3. P != NP
-      4. BPP
-      5. BQP
-      6. BQP > BPP
-         Shor's algorithm
-         Discrete logarithm
-         hidden Legendre symbol problem
-         Pell's equation
-         principal ideal problems
-         Grovers
-    E. Cryptography
-      1. RSA and Eliptic curve cryptography are toast
-      2. Shor's algorthm
+    <h2 class="bottom-left center">algorithmic complexity</h2>
+    <div class="equation">$$
+      \require{color}
+        \color[rgb]{.2,.6,1}
+        log \: N \hskip 1em
+        \color{yellow}
+        N \hskip 1em
+        \color[rgb]{0,1,.3}
+        N^2 \hskip 1em
+        \color[rgb]{1,1,1}
+        N^{100}$$</div>
+    <canvas class="graph"
+      data-line0="rgb(26,102,255)|Math.log(1.7*x+.5)"
+      data-line1="rgb(255,255,0)|.9*x"
+      data-line2="rgb(0,255,76)|x*x"
+      data-line3="rgb(255,255,255)|Math.pow(1.156*Math.min(x,.9),100)"
+      ></canvas>
+  </div>
+
+  <div class="slide">
+    <h2 class="bottom-left center">polynomial time</h2>
+    <div class="equation">$$
+      \require{color}
+        \color[rgb]{1,1,1}
+        N^2 = \ldots 0 N^3 + 1 N^2 + 0 N^1 + 0$$</div>
+    <canvas class="graph"
+      data-line0="rgb(255,255,255)|x*x"
+      ></canvas>
+  </div>
+
+  <div class="slide">
+    <h2 class="bottom-left center">exponential time</h2>
+    <div class="equation">$$
+      \require{color}
+        \color[rgb]{1,1,1}
+        2^N$$</div>
+    <canvas class="graph"
+      data-line0="rgb(255,255,255)|.02*(Math.exp(5*x)-1)"
+      ></canvas>
+  </div>
+
+  <div class="slide">
+    <div class="equation high">$$2^N$$</div>
+    <h3 class="center above">inefficient</h3>
+    <div class="divider"></div>
+    <h3 class="center below">efficient</h3>
+    <div class="equation low">$$a + bN + cN^2 + dN^3 \ldots$$</div>
+  </div>
+
+  <div class="slide dark outline">
+    <img src="maze.gif"/>
+    <h2 class="bottom-right inset bigger">NP</h2>
+  </div>
+
+  <div class="slide">
+    <h2 class="big bigger">P = NP?</h2>
+  </div>
+
+  <div class="slide dark outline">
+    <img src="improbability.gif"/>
+    <h2 class="bottom-right">if P = NP</h2>
+  </div>
+
+  <div class="slide dark outline">
+    <img src="skynet.gif"/>
+    <h2 class="bottom-right">if P = NP</h2>
+  </div>
+
+  <div class="slide dark outline">
+    <img src="money.gif"/>
+    <h2 class="bottom-right">clay millenial prize</h2>
+  </div>
+
+  <div class="slide dark outline">
+    <img src="dice.gif"/>
+    <h2 class="bottom-right bigger">BPP</h2>
+  </div>
+
+  <div class="slide">
+    <img src="petting_zoo.png"/>
+    <h2 class="top-left high">complexity zoo</h2>
+  </div>
+
+  <div class="slide">
+    <h2 class="big">Bounded Quantum Polynomial</h2>
+  </div>
+
+  <div class="slide">
+    <h2 class="bottom-right low">shor's algorithm</h2>
+    <canvas class="graph"
+      data-line0="rgba(255,255,255,.5)|.5 + .1*Math.sin(50*x) + .1*Math.sin(200*x)  + .1*Math.sin(250*x)"
+      ></canvas>
+  </div>
+
+  <div class="slide">
+    <h2 class="top-left center high">Other Quantum Algorithms</h2>
+    <ul>
+      <li>Discrete logarithm</li>
+      <li>hidden Legendre symbol problem</li>
+      <li>Pell's equation</li>
+      <li>principal ideal problems</li>
+      <li>Grover's Algorithm</li>
+    </ul>
+  </div>
+
+  <div class="slide dark outline">
+    <img src="cage_match.gif"/>
+    <h2 class="big bigger">BPP vs BQP vs NP?</h2>
+  </div>
+
+  <div class="slide dark outline">
+    <img src="breaking_encryption.gif"/>
+    <h2 class="bottom-right">breaking encryption</h2>
+  </div>
+
+  <div class="slide">
+    Todo:
+      Talk about QM
+      Cryptography
+      RSA and Eliptic curve cryptography are toast
+      Bibliography
 
   </div>
 
@@ -321,31 +471,29 @@ body {
 
     var slides = document.getElementsByClassName('slide');
     arrangeSlides( slides, slideIndex, true )
-    subslides = slides[slideIndex].getElementsByClassName('sub-slide');
-    if ( ! subslides.length ) {
-      subslides = null;
-    } else {
-      subSlideIndex = 0;
-      arrangeSlides( subslides, 0 );
-    }
 
     function arrangeSlides( slides, index, autoHeight ) {
       for (var i=0, slide; slide = slides[i]; i++) {
         slide.style.width = document.body.offsetWidth + 'px';
         if ( autoHeight )
           slide.style.height = document.body.offsetHeight + 'px';
-        if ( i > index )
+        if ( i > index ) {
           slide.style.left = document.body.offsetWidth + 'px';
-        else if ( i < index )
+          addClass( slide, 'offscreen' );
+        } else if ( i < index ) {
           slide.style.left = -slide.offsetWidth + 'px';
-        else
+          addClass( slide, 'offscreen' );
+        } else
           slide.style.left = '0px';
       }
     }
 
+    var offscreenTimeout;
     function transition( oldSlide, newSlide, direction, adjustHeight ) {
+      clearTimeout(offscreenTimeout);
       var windowWidth = document.body.offsetWidth;
       removeClass( newSlide, 'transition' );
+      removeClass( newSlide, 'offscreen' );
       newSlide.style.width = document.body.offsetWidth + 'px';
       if (adjustHeight)
         newSlide.style.height = document.body.offsetHeight + 'px';
@@ -357,6 +505,8 @@ body {
         newSlide.style.left = '0px';
         oldSlide.style.left = -direction * oldSlide.offsetWidth + 'px'
       }, 1);
+
+      offscreenTimeout = setTimeout(function() { addClass(oldSlide, 'offscreen'); }, 1000);
       return newSlide;
     }
 
@@ -368,14 +518,6 @@ body {
       interactive = newSlide.getElementsByClassName('interactive');
       for (var i=0, el; el = interactive[i]; i++)
         window[el.getAttribute('data-runner')].show(el);
-
-      subslides = newSlide.getElementsByClassName('sub-slide');
-      if ( ! subslides.length ) {
-        subslides = null;
-      } else {
-        subSlideIndex = ~direction ? 0 : subslides.length - 1;
-        arrangeSlides( subslides, subSlideIndex );
-      }
 
       return transition(oldSlide, newSlide, direction, true);
     }
@@ -411,6 +553,27 @@ body {
       }
     }
 
+    function graph() {
+      var canvases = document.querySelectorAll('canvas.graph');
+      for (var i=0, c; c=canvases[i]; i++) {
+        var w = c.width = c.offsetWidth * (window.devicePixelRatio || 1);
+        var h = c.height = c.offsetHeight * (window.devicePixelRatio || 1);
+        var ctx = c.getContext('2d');
+        ctx.translate(0,h);
+        ctx.scale(1,-1);
+        ctx.lineWidth = 6;
+        for (var j=0, line; line=c.getAttribute('data-line'+j); j++) {
+          ctx.beginPath();
+          ctx.strokeStyle = line.split('|')[0];
+          var f = new Function('x', 'return ' + line.split('|')[1]);
+          ctx.beginPath();
+          ctx.moveTo(1, h*f(1/w));
+          for (var x=2/w; x<=1; x += 1/w) ctx.lineTo(w*x,h*f(x));
+          ctx.stroke();
+        }
+      }
+    }
+    graph();
 
   </script>
 </foot>
