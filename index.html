@@ -130,6 +130,28 @@ body {
   border-top: 4px dashed white;
 }
 
+.slide .vertical-divider {
+  position: absolute;
+  top: 5%;
+  height: 70%;
+  left: 50%;
+  border-left: 4px dashed white;
+}
+
+.slide .rotate.left {
+  transform: rotateZ(90deg);
+  position: absolute;
+  top: 17%;
+  left: 44%;
+}
+
+.slide .rotate.right {
+  transform: rotateZ(-90deg);
+  position: absolute;
+  top: 10%;
+  right: 47%;
+}
+
 .slide .bottom-right {
   top: 64%;
   right: 5%;
@@ -238,7 +260,39 @@ body {
   text-shadow: 0px 0px 8px black;
 }
 
+.left-table {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  width: 25vw;
+  height: 25vw;
+  border-spacing: 3vw;
+  border-collapse: separate;
+}
 
+.right-table {
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  width: 35vw;
+  height: 30vw;
+  border-spacing: 3vw;
+  border-collapse: separate;
+}
+
+.slide table th {
+  font-weight: 100;
+  font-size: 1.2em;
+}
+
+.slide table .on {
+  background-color: white;
+  border: 2px solid white;
+}
+
+.slide table .off {
+  border: 2px solid white;
+}
 
 
   </style>
@@ -271,11 +325,7 @@ body {
 
   <div class="slide dark">
     <img src="quantum_leap.gif"/>
-    <h2 class="bottom-right">quantum mechanics?</h2>
-  </div>
-
-  <div class="slide">
-    <h2 class="bottom-right">How do you build one?</h2>
+    <h2 class="bottom-right">quantum theory</h2>
   </div>
 
   <div class="slide dark outline">
@@ -290,7 +340,29 @@ body {
   </div>
 
   <div class="slide">
-    <h2 class="bottom-right">what's the point?</h2>
+    <table class="left-table">
+      <tr><td class="on"></td> <td></td> <td></td></tr>
+      <tr><td></td> <td class="off"></td> <td></td></tr>
+      <tr><td></td> <td></td> <td class="on"></td></tr>
+    </table>
+    <h3 class="rotate right">pure state</h3>
+    <div class="vertical-divider"></div>
+    <h3 class="rotate left">entangled state</h3>
+    <table class="right-table">
+      <tr><th>a</th> <td class="off"></td> <td class="off"></td> <td class="off"></td></tr>
+      <tr><th>b</th> <td class="off"></td> <td class="off"></td> <td class="on"></td></tr>
+      <tr><th>c</th> <td class="off"></td> <td class="on"></td> <td class="off"></td></tr>
+      <tr><th>d</th> <td class="off"></td> <td class="on"></td> <td class="on"></td></tr>
+      <tr><th>e</th> <td class="on"></td> <td class="off"></td> <td class="off"></td></tr>
+      <tr><th>f</th> <td class="on"></td> <td class="off"></td> <td class="on"></td></tr>
+      <tr><th>g</th> <td class="on"></td> <td class="on"></td> <td class="off"></td></tr>
+      <tr><th>h</th> <td class="on"></td> <td class="on"></td> <td class="on"></td></tr>
+    </table>
+    <h2 class="bottom-right center low">superposition</h2>
+  </div>
+
+  <div class="slide">
+    <h2 class="bottom-right">what can quantum computers do?</h2>
   </div>
 
   <div class="slide dark">
@@ -305,11 +377,7 @@ body {
 
   <div class="slide dark outlines">
     <video src="efficiency.mp4" autoplay loop></video>
-    <h2 class="bottom-right inset">efficiency</h2>
-  </div>
-
-  <div class="slide">
-    <h2 class="bottom-right inset">how efficient?</h2>
+    <h2 class="bottom-right"> are QCs more efficient?</h2>
   </div>
 
   <div class="slide dark">
@@ -381,6 +449,11 @@ body {
   </div>
 
   <div class="slide dark outline">
+    <img src="money.gif"/>
+    <h2 class="bottom-right">clay millennium prize</h2>
+  </div>
+
+  <div class="slide dark outline">
     <img src="improbability.gif"/>
     <h2 class="bottom-right">if P = NP</h2>
   </div>
@@ -391,18 +464,8 @@ body {
   </div>
 
   <div class="slide dark outline">
-    <img src="money.gif"/>
-    <h2 class="bottom-right">clay millenial prize</h2>
-  </div>
-
-  <div class="slide dark outline">
     <img src="dice.gif"/>
     <h2 class="bottom-right bigger">BPP</h2>
-  </div>
-
-  <div class="slide">
-    <img src="petting_zoo.png"/>
-    <h2 class="top-left high">complexity zoo</h2>
   </div>
 
   <div class="slide">
@@ -432,21 +495,33 @@ body {
     <h2 class="big bigger">BPP vs BQP vs NP?</h2>
   </div>
 
+  <div class="slide">
+    <img src="petting_zoo.png"/>
+    <h2 class="top-left high">complexity zoo</h2>
+  </div>
+
   <div class="slide dark outline">
     <img src="breaking_encryption.gif"/>
     <h2 class="bottom-right">breaking encryption</h2>
   </div>
 
-  <div class="slide">
-    Todo:
-      Talk about QM
-      Cryptography
-      RSA and Eliptic curve cryptography are toast
-      Bibliography
-
+  <div class="slide dark outline">
+    <img src="toast.gif"/>
+    <h2 class="bottom-right center">RSA / Elliptic Curve Cryptography</h2>
   </div>
 
+  <div class="slide">
+    <img src="qcsd.jpg"/>
+  </div>
 
+  <div class="slide dark">
+    <img src="floc.jpg"/>
+  </div>
+
+  <div class="slide">
+    <h2 class="bottom-right center">Thank You</h2>
+    <h3 class="top-right high">Alex Cruikshank <br/> @sivoh <br/> acruikshank@github</h3>
+  </div>
 </body>
 <foot>
   <script>
@@ -561,7 +636,7 @@ body {
         var ctx = c.getContext('2d');
         ctx.translate(0,h);
         ctx.scale(1,-1);
-        ctx.lineWidth = 6;
+        ctx.lineWidth = 3;
         for (var j=0, line; line=c.getAttribute('data-line'+j); j++) {
           ctx.beginPath();
           ctx.strokeStyle = line.split('|')[0];
